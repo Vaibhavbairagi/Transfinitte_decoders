@@ -41,7 +41,7 @@ public class UserPrescriptionRecords {
 Replace this code into area where you want to fetch (onStart usually)
 
 UserPrescriptionRecords data;
-FirebaseFirestore.getInstance().collection("Users").whereEqualTo("userId", FirebaseAuth.getInstance().getUid()).get()
+FirebaseFirestore.getInstance().collection("Users").whereEqualTo("userId", "test").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {

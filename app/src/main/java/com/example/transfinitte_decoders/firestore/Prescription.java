@@ -36,6 +36,7 @@ public class Prescription {
     String symptoms;
     List<dosage> meds;
     String followUp;
+    String doctor;
 
     public String getDiagnosis() {
         return diagnosis;
@@ -69,11 +70,12 @@ public class Prescription {
         this.followUp = followUp;
     }
 
-    public Prescription(String diagnosis, String symptoms, List<dosage> meds, String followUp) {
+    public Prescription(String diagnosis, String symptoms, List<dosage> meds, String followUp, String doctor) {
         this.diagnosis = diagnosis;
         this.symptoms = symptoms;
         this.meds = meds;
         this.followUp = followUp;
+        this.doctor = doctor;
     }
 
     public Prescription() {
