@@ -32,14 +32,16 @@ public class InventoryRecords {
             this.quantity = quantity;
         }
     }
-
+    String title;
     List<entry> data;
 
     public InventoryRecords() {
         data = new ArrayList<>();
+        title = "inventory";
     }
 
     public InventoryRecords(List<entry> data) {
+        title = "inventory";
         this.data = data;
     }
 
@@ -56,7 +58,7 @@ public class InventoryRecords {
 Replace this code into area where you want to fetch (onStart usually)
 
 InventoryRecords data;
-FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("userId", "inventory").get()
+FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("title", "inventory").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
