@@ -1,36 +1,9 @@
 package com.example.transfinitte_decoders.firestore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Prescription {
-    public class dosage{
-        String medicine;
-        int perDay;
-
-        public dosage() {
-        }
-
-        public String getMedicine() {
-            return medicine;
-        }
-
-        public void setMedicine(String medicine) {
-            this.medicine = medicine;
-        }
-
-        public int getPerDay() {
-            return perDay;
-        }
-
-        public void setPerDay(int perDay) {
-            this.perDay = perDay;
-        }
-
-        public dosage(String medicine, int perDay) {
-            this.medicine = medicine;
-            this.perDay = perDay;
-        }
-    }
 
     String diagnosis;
     String symptoms;
@@ -79,5 +52,10 @@ public class Prescription {
     }
 
     public Prescription() {
+        meds = new ArrayList<>();
+        diagnosis=symptoms=followUp=doctor="NONE";
+        meds.add(new dosage("paracetamol",10));
+        meds.add(new dosage("paracetamol",10));
+        meds.add(new dosage("paracetamol",10));
     }
 }

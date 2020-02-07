@@ -4,40 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryRecords {
-    public class entry{
-        String medicine;
-        int quantity;
 
-        public entry(String medicine, int quantity) {
-            this.medicine = medicine;
-            this.quantity = quantity;
-        }
-
-        public entry() {
-        }
-
-        public String getMedicine() {
-            return medicine;
-        }
-
-        public void setMedicine(String medicine) {
-            this.medicine = medicine;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(int quantity) {
-            this.quantity = quantity;
-        }
-    }
     String title;
     List<entry> data;
 
     public InventoryRecords() {
         data = new ArrayList<>();
         title = "inventory";
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public InventoryRecords(List<entry> data) {

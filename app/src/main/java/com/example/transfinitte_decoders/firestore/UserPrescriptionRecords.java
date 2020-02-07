@@ -24,6 +24,9 @@ public class UserPrescriptionRecords {
     }
 
     public UserPrescriptionRecords() {
+        userId="new";
+        prescriptions = new ArrayList<>();
+        prescriptions.add(new Prescription());
     }
 
     public UserPrescriptionRecords(String userId, List<Prescription> prescriptions) {
