@@ -33,9 +33,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity {
 
     public static UserPrescriptionRecords data;
@@ -70,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    public static void setPrescriptionRecordData(){
+
+        FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
     }
 
     @Override
