@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+
+        >
         <LinearLayout
+            android:padding="10dp"
+            android:background="@drawable/rec_bac_gradient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -17,11 +24,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Diagnosed by : "
+            android:textStyle="bold"
+            android:textSize="20sp"
             android:padding="5dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:textSize="20sp"
+
             android:id="@+id/txt_diagby"></TextView>
         </LinearLayout>
         <LinearLayout
@@ -29,6 +40,8 @@
             android:layout_height="wrap_content">
             <TextView
                 android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:layout_height="wrap_content"
                 android:text="Diagnosis / Symptoms : "
                 android:padding="5dp"/>
@@ -36,6 +49,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="20sp"
+
                 android:id="@+id/txt_diagwith"></TextView>
         </LinearLayout>
         <LinearLayout
@@ -45,11 +60,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medicines : "
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:padding="5dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="20sp"
+
                 android:id="@+id/txt_meds"></TextView>
         </LinearLayout>
         <LinearLayout
@@ -59,14 +78,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Follow up : "
+                android:textSize="20sp"
+                android:textStyle="bold"
+
                 android:padding="5dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:textSize="20sp"
+
                 android:id="@+id/txt_followup"></TextView>
         </LinearLayout>
-        <RelativeLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Take Medicine in : "
+                android:textStyle="bold"
+                android:textSize="20sp"></TextView>
+            <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp">
@@ -74,6 +104,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Morning"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:id="@+id/mo"
                 android:clickable="false"
                 android:layout_alignParentLeft="true"/>
@@ -81,6 +113,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Afternoon"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:clickable="false"
                 android:id="@+id/af"
                 android:layout_centerHorizontal="true"/>
@@ -89,6 +123,8 @@
                 android:layout_height="wrap_content"
                 android:text="Night"
                 android:id="@+id/ni"
+                android:textSize="20sp"
+                android:textStyle="bold"
                 android:clickable="false"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
