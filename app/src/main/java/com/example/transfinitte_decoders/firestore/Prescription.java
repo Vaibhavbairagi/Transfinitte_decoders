@@ -1,64 +1,76 @@
 package com.example.transfinitte_decoders.firestore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Prescription {
-    public class dosage{
-        String medicine;
-        int perDay;
 
-        public dosage() {
-        }
+    String diagnosissymptoms; //
+    String meds; //
+    String followUp; //
+    String doctor; //
+    boolean morning,afternoon,night; //
 
-        public String getMedicine() {
-            return medicine;
-        }
 
-        public void setMedicine(String medicine) {
-            this.medicine = medicine;
-        }
-
-        public int getPerDay() {
-            return perDay;
-        }
-
-        public void setPerDay(int perDay) {
-            this.perDay = perDay;
-        }
-
-        public dosage(String medicine, int perDay) {
-            this.medicine = medicine;
-            this.perDay = perDay;
-        }
+    public Prescription() {
     }
 
-    String diagnosis;
-    String symptoms;
-    List<dosage> meds;
-    String followUp;
-    String doctor;
-
-    public String getDiagnosis() {
-        return diagnosis;
+    public boolean isMorning() {
+        return morning;
     }
 
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
+    public void setMorning(boolean morning) {
+        this.morning = morning;
     }
 
-    public String getSymptoms() {
-        return symptoms;
+    public boolean isAfternoon() {
+        return afternoon;
     }
 
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
+    public void setAfternoon(boolean afternoon) {
+        this.afternoon = afternoon;
     }
 
-    public List<dosage> getMeds() {
+    public boolean isNight() {
+        return night;
+    }
+
+    public void setNight(boolean night) {
+        this.night = night;
+    }
+
+    public String getDiagnosissymptoms() {
+        return diagnosissymptoms;
+    }
+
+    public void setDiagnosissymptoms(String diagnosissymptoms) {
+        this.diagnosissymptoms = diagnosissymptoms;
+    }
+
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
+    }
+
+    public Prescription(String diagnosissymptoms, String meds, String followUp, String doctor, boolean morning, boolean afternoon, boolean night) {
+        this.diagnosissymptoms = diagnosissymptoms;
+        this.meds = meds;
+        this.followUp = followUp;
+        this.doctor = doctor;
+        this.morning = morning;
+        this.afternoon = afternoon;
+        this.night = night;
+    }
+
+    public String getMeds() {
         return meds;
     }
 
-    public void setMeds(List<dosage> meds) {
+    public void setMeds(String meds) {
         this.meds = meds;
     }
 
@@ -70,14 +82,5 @@ public class Prescription {
         this.followUp = followUp;
     }
 
-    public Prescription(String diagnosis, String symptoms, List<dosage> meds, String followUp, String doctor) {
-        this.diagnosis = diagnosis;
-        this.symptoms = symptoms;
-        this.meds = meds;
-        this.followUp = followUp;
-        this.doctor = doctor;
-    }
 
-    public Prescription() {
-    }
 }
