@@ -1,6 +1,9 @@
 package com.example.transfinitte_decoders.adminDoc;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,6 +15,7 @@ import com.example.transfinitte_decoders.firestore.Prescription;
 import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -72,4 +76,23 @@ public class Medical_Report extends AppCompatActivity {
             }
         });
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.logout_for_admin_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Medical_Report.this, LoginActivityDoc.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return true;
+    }
+
 }
