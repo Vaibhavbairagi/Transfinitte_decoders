@@ -3,6 +3,7 @@ package com.example.transfinitte_decoders;
 import android.os.Bundle;
 
 import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
+import com.example.transfinitte_decoders.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        recyclerdata = new DepartmentsPojo();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -73,20 +75,22 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseFirestore.getInstance().collection("Doc").whereEqualTo("docid","PURANA").get()
+        FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("docid", "doctors").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-
                         if (task.isSuccessful()) {
+                            Log.d("TAG", task.getResult().toString());
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                Log.d("DATA",""+documentSnapshot.toString());
-                                recyclerdata=documentSnapshot.toObject(DepartmentsPojo.class);
+                                Log.d("TAGR",  documentSnapshot.toString());
+                                recyclerdata = documentSnapshot.toObject(DepartmentsPojo.class);
+                                HomeFragment.recyclerAdapter.setdata(recyclerdata);
+                                Log.d("TAGP", recyclerdata.toString());
+
                             }
-                            Log.d("TAG",recyclerdata.getDepartments().size()+"");
                         } else {
-                            Toast.makeText(MainActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            Log.d("TAG","taskunsuccess");
+                            Log.d("TAG", "task.().toString()");
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

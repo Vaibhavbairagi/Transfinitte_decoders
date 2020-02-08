@@ -47,8 +47,7 @@ public class HomeFragment extends Fragment {
     private RelativeLayout bottom_sheet,bottom_sheet_bg,b1,b2;
     private BottomSheetBehavior sheetBehavior;
     private RecyclerView recyclerView;
-    private HomeDeptRecyclerAdapter recyclerAdapter;
-    private DepartmentsPojo recyclerdata;
+    public static HomeDeptRecyclerAdapter recyclerAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -127,11 +126,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void setUpDeptRecyclerView() {
-        recyclerdata= MainActivity.recyclerdata;
+
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        recyclerAdapter= new HomeDeptRecyclerAdapter(recyclerdata);
+        recyclerAdapter= new HomeDeptRecyclerAdapter(MainActivity.recyclerdata);
         recyclerView.setAdapter(recyclerAdapter);
+        recyclerAdapter.setdata(MainActivity.recyclerdata);
     }
 
     private void setUpViewPager(){

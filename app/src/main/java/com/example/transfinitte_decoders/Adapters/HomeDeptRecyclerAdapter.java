@@ -1,5 +1,6 @@
 package com.example.transfinitte_decoders.Adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +20,10 @@ public class HomeDeptRecyclerAdapter extends RecyclerView.Adapter<HomeDeptRecycl
         this.deptNames=deptNames;
     }
 
+    public void setdata(DepartmentsPojo dept){
+        deptNames=dept;
+        notifyDataSetChanged();
+    }
     @NonNull
     @Override
     public MyDeptViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -33,6 +38,7 @@ public class HomeDeptRecyclerAdapter extends RecyclerView.Adapter<HomeDeptRecycl
 
     @Override
     public int getItemCount() {
+        Log.d("TAGs", deptNames.getDepartments().size()+" ");
         return deptNames.getDepartments().size();
     }
 
