@@ -76,6 +76,11 @@ public class Doctor_Activity extends AppCompatActivity {
                 finish();
                 Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.dispenser:
+                Intent intent2 = new Intent(Doctor_Activity.this, dispenser_activity.class);
+                startActivity(intent2);
+
+
         }
         return true;
     }

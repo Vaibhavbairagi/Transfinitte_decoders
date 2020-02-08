@@ -91,6 +91,11 @@ public class Medical_Report extends AppCompatActivity {
                 finish();
                 Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.dispenser:
+                Intent intent3 = new Intent(Medical_Report.this, dispenser_activity.class);
+                startActivity(intent3);
+                
+                break;
         }
         return true;
     }

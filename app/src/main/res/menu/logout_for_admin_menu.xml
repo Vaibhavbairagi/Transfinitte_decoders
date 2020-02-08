@@ -7,4 +7,10 @@
         android:orderInCategory="100"
         app:showAsAction="never"
         android:title="Sign Out"/>
+    <item
+        android:id="@+id/dispenser"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="Dispenser"/>
+
 </menu>

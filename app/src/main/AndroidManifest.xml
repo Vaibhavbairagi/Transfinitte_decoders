@@ -11,10 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".adminDoc.Doctor_Activity"></activity>
-        <activity android:name=".adminDoc.Medical_Report">
-
-        </activity>
+        <activity android:name=".adminDoc.dispenser_activity"></activity>
+        <activity android:name=".adminDoc.Doctor_Activity" />
+        <activity android:name=".adminDoc.Medical_Report"></activity>
         <activity android:name=".adminDoc.LoginActivityDoc">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

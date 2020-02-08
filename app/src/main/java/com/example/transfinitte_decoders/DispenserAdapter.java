@@ -31,6 +31,11 @@ public class DispenserAdapter extends RecyclerView.Adapter<DispenserAdapter.MyVi
         }
     }
 
+    public void setDispenserList(List<entry> data){
+        dispenserList=data;
+        notifyDataSetChanged();
+    }
+
     public DispenserAdapter(List<entry> dispenserList) {
         this.dispenserList = dispenserList;
     }
