@@ -117,8 +117,11 @@ public class LoginActivityDoc extends AppCompatActivity {
                         progressBar.setVisibility(View.INVISIBLE);
                     }
                     else{
-                        Toast.makeText(getApplicationContext(),"Login Successful "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(),"Login Successful "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.INVISIBLE);
+                        Intent intent = new Intent(LoginActivityDoc.this,Doctor_Activity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }
             });
