@@ -94,7 +94,7 @@ public class Medical_Report extends AppCompatActivity {
             case R.id.dispenser:
                 Intent intent3 = new Intent(Medical_Report.this, dispenser_activity.class);
                 startActivity(intent3);
-                
+
                 break;
         }
         return true;
