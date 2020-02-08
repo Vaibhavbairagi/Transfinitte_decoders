@@ -122,6 +122,7 @@ public class HomeFragment extends Fragment {
                 sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });
+
         return root;
     }
 
