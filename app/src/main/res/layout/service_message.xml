@@ -39,7 +39,7 @@
             android:layout_margin="8dp"/>
 
         <ImageButton
-            android:id="@+id/chat_send_materialButton"
+            android:id="@+id/send_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_send"

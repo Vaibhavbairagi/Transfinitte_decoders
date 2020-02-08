@@ -9,12 +9,20 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import com.example.aditya.friends.R;
+import com.example.transfinitte_decoders.R;
+
+import java.util.ArrayList;
+
+import androidx.recyclerview.widget.RecyclerView;
+
 
 public class Chat_Head_Service extends Service {
+    ArrayList<ChatMessage> chat;
     /*Copy just the below code to the button, you want to map this service to
     startService(new Intent(getApplicationContext(), Chat_Head_Service.class));*/
 
@@ -48,7 +56,6 @@ public class Chat_Head_Service extends Service {
     }
      */
     private WindowManager mWindowManager;
-    private static final String KEYPHRASE = "hello india";
     private View mChatHeadView;
     private View mMessageView;
     public Chat_Head_Service() {
@@ -63,8 +70,38 @@ public class Chat_Head_Service extends Service {
     public void onCreate() {
         super.onCreate();
         //Inflate the chat head layout we created
+        chat = new ArrayList<>();
         mChatHeadView = LayoutInflater.from(Chat_Head_Service.this).inflate(R.layout.service_chat_head, null);
         mMessageView = LayoutInflater.from(Chat_Head_Service.this).inflate(R.layout.service_message,null);
+        final EditText editText = (EditText)mMessageView.findViewById(R.id.edit_text);
+        RecyclerView recyclerView = (RecyclerView)mMessageView.findViewById(R.id.chat_recyclerView);
+        final ChatListAdapter chatListAdapter = new ChatListAdapter(chat);
+        recyclerView.setAdapter(chatListAdapter);
+        final ImageButton send = (ImageButton)mMessageView.findViewById(R.id.send_button);
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(editText.getText().toString().contains("First Aid")){
+                    chat.add(new ChatMessage(editText.getText().toString(),"Whats up?"));
+                    chatListAdapter.notifyItemInserted(chat.size()-1);
+                }else if(editText.getText().toString().contains("Hi")){
+                    chat.add(new ChatMessage(editText.getText().toString(),"Vannakum"));
+                    chatListAdapter.notifyItemInserted(chat.size()-1);
+                }else if(editText.getText().toString().contains("fracture")){
+                    chat.add(new ChatMessage(editText.getText().toString(),"\n" +
+                            "    Stop any bleeding. Apply pressure to the wound with a sterile bandage, a clean cloth or a clean piece of clothing.\n" +
+                            "    Immobilize the injured area. Don't try to realign the bone or push a bone that's sticking out back in. If you've been trained in how to splint and professional help isn't readily available, apply a splint to the area above and below the fracture sites. Padding the splints can help reduce discomfort.\n" +
+                            "    Apply ice packs to limit swelling and help relieve pain. Don't apply ice directly to the skin. Wrap the ice in a towel, piece of cloth or some other material.\n" +
+                            "    Treat for shock. If the person feels faint or is breathing in short, rapid breaths, lay the person down with the head slightly lower than the trunk and, if possible, elevate the legs.\n"
+                            + "Press SOS if extreme"));
+                    chatListAdapter.notifyItemInserted(chat.size()-1);
+                }else if(editText.getText().toString().contains("wound")||editText.getText().toString().contains("cut")){
+                    chat.add(new ChatMessage(editText.getText().toString(),"Keep the wounds moist, this helps the wounds heal faster and can help keep bandages from sticking. " +
+                            "\n" + "This is especially helpful for large wounds and scrapes. " +
+                            "\n" + "Keeping the area clean and applying a thin layer of antibiotic ointment can help prevent infection"));
+                }
+            }
+        });
         //Add the view to the window.
         final WindowManager.LayoutParams params = new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -133,6 +170,7 @@ public class Chat_Head_Service extends Service {
                             if(!mMessageView.isAttachedToWindow()){
                                 params_message.gravity = Gravity.BOTTOM;
                                 mWindowManager.addView(mMessageView,params_message);
+
                             }else{
                                 mWindowManager.removeView(mMessageView);
                             }
