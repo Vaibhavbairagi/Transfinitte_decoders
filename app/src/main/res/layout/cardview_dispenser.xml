@@ -8,21 +8,36 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="5dp">
+        app:cardCornerRadius="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/name_of_the_medicine"
+                android:layout_weight="1"
                 android:text="ABC"
+                android:padding="10dp"
                 android:textSize="20sp"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"
+                android:background="#d3d3d3"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/quantity_of_the_medicine"
+                android:layout_weight="2"
+                android:gravity="end"
+                android:padding="10dp"
                 android:text="Quantity"
                 android:textSize="20sp"/>
         </LinearLayout>
