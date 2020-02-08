@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "281928592681",
-    "firebase_url": "https://transfinittedecoders.firebaseio.com",
-    "project_id": "transfinittedecoders",
-    "storage_bucket": "transfinittedecoders.appspot.com"
+    "project_number": "446050444943",
+    "firebase_url": "https://transfinitte-bf790.firebaseio.com",
+    "project_id": "transfinitte-bf790",
+    "storage_bucket": "transfinitte-bf790.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:281928592681:android:115a9b4a4cd37e74ee1b38",
+        "mobilesdk_app_id": "1:446050444943:android:c22d03d431c638b67f32fa",
         "android_client_info": {
           "package_name": "com.example.transfinitte_decoders"
         }
       },
       "oauth_client": [
         {
-          "client_id": "281928592681-f6hfjnuge837a3uu83detslaaa48n5dc.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.transfinitte_decoders",
-            "certificate_hash": "1e1d67e2f00831b2419bc1f8a05d77ba041ad512"
-          }
-        },
-        {
-          "client_id": "281928592681-5edsfidihnunt4u70lj70kgqtubumufj.apps.googleusercontent.com",
+          "client_id": "446050444943-p3ei0nb38k44dl7cnekra6chqad530hr.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCPcPd_wg5LWCccQJWIpUIjbMNRsq8qmcE"
+          "current_key": "AIzaSyC5AalUY55oejESrxgpe-VXNJvF4mcR68I"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "281928592681-5edsfidihnunt4u70lj70kgqtubumufj.apps.googleusercontent.com",
+              "client_id": "446050444943-p3ei0nb38k44dl7cnekra6chqad530hr.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
