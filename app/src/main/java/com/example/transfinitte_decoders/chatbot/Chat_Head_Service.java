@@ -18,6 +18,35 @@ public class Chat_Head_Service extends Service {
     /*Copy just the below code to the button, you want to map this service to
     startService(new Intent(getApplicationContext(), Chat_Head_Service.class));*/
 
+    /*Add the below to the main activity to allow for chatbot to work
+    To be placed at the top
+    private static final int CODE_DRAW_OVER_OTHER_APP_PERMISSION;
+
+    static {
+        CODE_DRAW_OVER_OTHER_APP_PERMISSION = 2084;
+    }
+    The below code goes in onCreate
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+            //If the draw over permission is not available open the settings screen
+            //to grant the permission.
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, CODE_DRAW_OVER_OTHER_APP_PERMISSION);
+        }
+     The below code to be placed after onCreate
+      @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CODE_DRAW_OVER_OTHER_APP_PERMISSION) {
+
+            //Check if the permission is granted or not.
+            if (resultCode == RESULT_OK) {
+            } else { //Permission is not available
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
+     */
     private WindowManager mWindowManager;
     private static final String KEYPHRASE = "hello india";
     private View mChatHeadView;
