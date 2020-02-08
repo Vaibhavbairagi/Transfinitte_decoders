@@ -97,6 +97,26 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        /*
+        TODO: put into onclick
+        FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("Department", "cardiology").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("TAG1", task.getResult().toString());
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                Log.d("TAG1",  documentSnapshot.toString());
+                                DocsPojo ecyclerdata = documentSnapshot.toObject(DocsPojo.class);
+                                Log.d("TAG2", ecyclerdata.toString());
+
+                            }
+                        } else {
+                            Log.d("TAG", "task.().toString()");
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });*/
 
     }
 
