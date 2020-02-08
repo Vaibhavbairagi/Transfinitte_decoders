@@ -1,5 +1,6 @@
 package com.example.transfinitte_decoders.adminDoc;
 
+
 import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.PendingIntent;
@@ -8,6 +9,12 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.os.SystemClock;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,6 +27,7 @@ import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
 import com.example.transfinitte_decoders.notification.MyNotificationPublisher;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -68,6 +76,7 @@ public class Medical_Report extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Prescription prescription = new Prescription(symptoms.getText().toString(),med.getText().toString(),followup.getText().toString(),"mohan",morning.isChecked(),afternoon.isChecked(),night.isChecked());
                 data.getPrescriptions().add(prescription);
                 FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
@@ -107,4 +116,43 @@ public class Medical_Report extends AppCompatActivity {
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
     }
+
+                if(rollno.getText().toString().length() == 9) {
+                    Prescription prescription = new Prescription(symptoms.getText().toString(), med.getText().toString(), followup.getText().toString(), LoginActivityDoc.mAuth.getCurrentUser().getEmail(), morning.isChecked(), afternoon.isChecked(), night.isChecked());
+                    data.getPrescriptions().add(prescription);
+                    FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
+                    Toast.makeText(Medical_Report.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    rollno.setError("Invalid Roll no.");
+                    rollno.requestFocus();
+                }
+            }
+        });
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.logout_for_admin_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Medical_Report.this, LoginActivityDoc.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.dispenser:
+                Intent intent3 = new Intent(Medical_Report.this, dispenser_activity.class);
+                startActivity(intent3);
+
+                break;
+        }
+        return true;
+    }
+
+
 }

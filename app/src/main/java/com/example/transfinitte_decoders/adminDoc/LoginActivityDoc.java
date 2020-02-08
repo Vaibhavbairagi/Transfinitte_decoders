@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,8 +36,11 @@ public class LoginActivityDoc extends AppCompatActivity {
     Boolean loginMode = true;
     ProgressBar progressBar;
     FirebaseFirestore db;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
     private static final String TAG = "LoginActivity";
 
+    Boolean student;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +54,16 @@ public class LoginActivityDoc extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progress_circular);
         createAccount = findViewById(R.id.createAccount);
+        radioGroup = findViewById(R.id.radio_group_stu);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                radioButton = findViewById(selectedId);
+                onRadioButtonClicked(radioButton);
+                Log.e("TAG", "yes");
+            }
+        });
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +73,14 @@ public class LoginActivityDoc extends AppCompatActivity {
             }
         });
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivityDoc.this, Doctor_Activity.class));
-            finish();
+            if(mAuth.getCurrentUser().getEmail().toString().substring(0, 3).equals("doc")){
+                startActivity(new Intent(LoginActivityDoc.this, Doctor_Activity.class));
+                finish();
+            }
+            else{
+                startActivity(new Intent(LoginActivityDoc.this, MainActivity.class));
+                finish();
+            }
         }
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,9 +141,17 @@ public class LoginActivityDoc extends AppCompatActivity {
                     else{
                         Toast.makeText(getApplicationContext(),"Login Successful ",Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.INVISIBLE);
-                        Intent intent = new Intent(LoginActivityDoc.this, Doctor_Activity.class);
-                        startActivity(intent);
-                        finish();
+                        if(student == false){
+                            Log.e("TAG", "doctor");
+                            Intent intent = new Intent(LoginActivityDoc.this, Doctor_Activity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                        else{
+                            Intent intent = new Intent(LoginActivityDoc.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 }
             });
@@ -165,6 +195,23 @@ public class LoginActivityDoc extends AppCompatActivity {
 
             }
         });
+    }
+    public void onRadioButtonClicked(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+        switch (view.getId()){
+            case R.id.student:
+                if(checked){
+                    Log.e("TAG", "available");
+                    student = true;
+                    break;
+                }
+            case R.id.doctor:
+                if(checked){
+                    Log.e("TAG", "doctor");
+                    student = false;
+                    break;
+                }
+        }
     }
 }
 
