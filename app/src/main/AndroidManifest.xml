@@ -15,6 +15,7 @@
         <activity android:name=".service"></activity>
         <activity android:name=".adminDoc.dispenser_activity"></activity>
         <activity android:name=".adminDoc.Doctor_Activity" />
+        <activity android:name=".DoctorsActivity"/>
         <activity android:name=".adminDoc.Medical_Report"></activity>
         <activity android:name=".adminDoc.LoginActivityDoc">
             <intent-filter>
