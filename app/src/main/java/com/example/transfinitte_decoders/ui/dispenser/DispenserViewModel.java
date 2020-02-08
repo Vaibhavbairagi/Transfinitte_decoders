@@ -1,14 +1,14 @@
-package com.example.transfinitte_decoders.ui.tools;
+package com.example.transfinitte_decoders.ui.dispenser;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ToolsViewModel extends ViewModel {
+public class DispenserViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ToolsViewModel() {
+    public DispenserViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is tools fragment");
     }
