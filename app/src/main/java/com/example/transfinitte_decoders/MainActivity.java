@@ -3,6 +3,7 @@ package com.example.transfinitte_decoders;
 import android.os.Bundle;
 
 import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
+import com.example.transfinitte_decoders.pojos.DocsPojo;
 import com.example.transfinitte_decoders.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static DepartmentsPojo recyclerdata;
+    public static DocsPojo docsData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+
     }
 
 
