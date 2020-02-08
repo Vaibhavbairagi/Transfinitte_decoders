@@ -3,6 +3,7 @@
     package="com.example.transfinitte_decoders">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -14,6 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".adminDoc.dispenser_activity"></activity>
         <activity android:name=".adminDoc.Doctor_Activity" />
+        <activity android:name=".DoctorsActivity"/>
         <activity android:name=".adminDoc.Medical_Report"></activity>
         <activity android:name=".adminDoc.LoginActivityDoc">
             <intent-filter>
