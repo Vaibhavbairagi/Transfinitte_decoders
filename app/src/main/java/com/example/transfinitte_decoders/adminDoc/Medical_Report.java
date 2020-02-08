@@ -59,9 +59,16 @@ public class Medical_Report extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Prescription prescription = new Prescription(symptoms.getText().toString(),med.getText().toString(),followup.getText().toString(),LoginActivityDoc.mAuth.getCurrentUser().getEmail(),morning.isChecked(),afternoon.isChecked(),night.isChecked());
-                data.getPrescriptions().add(prescription);
-                FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
+                if(rollno.getText().toString().length() == 9) {
+                    Prescription prescription = new Prescription(symptoms.getText().toString(), med.getText().toString(), followup.getText().toString(), LoginActivityDoc.mAuth.getCurrentUser().getEmail(), morning.isChecked(), afternoon.isChecked(), night.isChecked());
+                    data.getPrescriptions().add(prescription);
+                    FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
+                    Toast.makeText(Medical_Report.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    rollno.setError("Invalid Roll no.");
+                    rollno.requestFocus();
+                }
             }
         });
     }
