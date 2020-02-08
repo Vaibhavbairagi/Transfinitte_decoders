@@ -169,7 +169,7 @@
             app:cardCornerRadius="10dp">
 
             <Button
-                android:id="@+id/btn1"
+                android:id="@+id/btn_volunteer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
@@ -186,11 +186,11 @@
             app:cardCornerRadius="10dp">
 
             <Button
-                android:id="@+id/btn2"
+                android:id="@+id/btn_ambulance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:text="Ambulance"
+                android:text="Call Ambulance"
                 android:textColor="#ffffff" />
         </androidx.cardview.widget.CardView>
 
@@ -203,12 +203,14 @@
             app:cardCornerRadius="10dp">
 
             <Button
-                android:id="@+id/btn3"
+                android:id="@+id/btn_apollo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimary"
-                android:text="Apollo"
+                android:text="Call Apollo"
+
                 android:textColor="#ffffff" />
+
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
