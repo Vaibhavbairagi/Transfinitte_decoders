@@ -14,7 +14,7 @@
         android:hardwareAccelerated="true">
         <activity
             android:name=".dispenser_activity"
-            android:label="@string/title_activity_dispenser_activity"
+
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".MainActivity"

@@ -39,6 +39,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static UserPrescriptionRecords data;
+    public static InventoryRecords data_dispenser;
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -61,8 +62,7 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
-        Intent intent = new Intent(this, dispenser_activity.class);
-        startActivity(intent);
+
     }
 
     @Override
@@ -82,6 +82,21 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                                 data = documentSnapshot.toObject(UserPrescriptionRecords.class);
+
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+        FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("title", "inventory").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                data_dispenser = documentSnapshot.toObject(InventoryRecords.class);
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();

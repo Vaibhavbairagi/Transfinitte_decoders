@@ -11,15 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.transfinitte_decoders.firestore.entry;
+
 import java.util.List;
 
 public class DispenserAdapter extends RecyclerView.Adapter<DispenserAdapter.MyViewHolder> {
 
 
-    private List<Dispenser> dispenserList;
+    private List<entry> dispenserList;
 
     class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView name, availability, quantity;
+        TextView name, quantity;
 
         MyViewHolder(View view) {
             super(view);
@@ -29,25 +31,28 @@ public class DispenserAdapter extends RecyclerView.Adapter<DispenserAdapter.MyVi
         }
     }
 
-    public DispenserAdapter(List<Dispenser> dispenserList) {
+    public DispenserAdapter(List<entry> dispenserList) {
         this.dispenserList = dispenserList;
     }
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.dispenser_medicines_list, parent, false);
-        return new MyViewHolder(itemView);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.cardview_dispenser, parent, false);
+
+        //view.setOnClickListener(MainActivity.myOnClickListener);
+
+        DispenserAdapter.MyViewHolder myViewHolder = new DispenserAdapter.MyViewHolder(view);
+        return myViewHolder;
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        Dispenser dispenserMedicine = dispenserList.get(position);
-        holder.name.setText(dispenserMedicine.getMedicine());
-        holder.quantity.setText(String.valueOf(dispenserMedicine.getQuantity()));
-
+        entry entry_med_dis = dispenserList.get(position);
+        holder.name.setText(entry_med_dis.getMedicine());
+        holder.quantity.setText(String.valueOf(entry_med_dis.getQuantity()));
 
     }
 
