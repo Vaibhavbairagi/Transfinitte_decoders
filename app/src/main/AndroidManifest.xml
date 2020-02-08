@@ -12,20 +12,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".adminDoc.Doctor_Activity" />
+        <activity android:name=".adminDoc.Medical_Report">
+
         <activity android:name=".service"></activity>
         <activity android:name=".adminDoc.dispenser_activity"></activity>
         <activity android:name=".adminDoc.Doctor_Activity" />
         <activity android:name=".DoctorsActivity"/>
         <activity android:name=".adminDoc.Medical_Report"></activity>
         <activity android:name=".adminDoc.LoginActivityDoc">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".adminDoc.LoginActivityDoc"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
+        <service
+            android:name=".chatbot.Chat_Head_Service"
+            android:stopWithTask="false" />
+        <receiver android:name=".notification.AlarmReciever" />
     </application>
 </manifest>
