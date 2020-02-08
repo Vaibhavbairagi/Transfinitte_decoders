@@ -9,14 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
 
         >
         <LinearLayout
             android:padding="10dp"
-            android:background="@drawable/rec_bac_gradient"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#20012951">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -25,6 +26,7 @@
             android:layout_height="wrap_content"
             android:text="Diagnosed by : "
             android:textStyle="bold"
+            android:textColor="#000000"
             android:textSize="20sp"
             android:padding="5dp"/>
         <TextView
@@ -32,8 +34,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:textSize="20sp"
-
-            android:id="@+id/txt_diagby"></TextView>
+            android:textColor="#000000"
+            android:id="@+id/txt_diagby"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -42,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:textColor="#000000"
                 android:layout_height="wrap_content"
                 android:text="Diagnosis / Symptoms : "
                 android:padding="5dp"/>
@@ -50,8 +53,8 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textSize="20sp"
-
-                android:id="@+id/txt_diagwith"></TextView>
+                android:textColor="#000000"
+                android:id="@+id/txt_diagwith"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,6 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Medicines : "
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:padding="5dp"/>
@@ -68,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textSize="20sp"
-
+                android:textColor="#000000"
                 android:id="@+id/txt_meds"></TextView>
         </LinearLayout>
         <LinearLayout
@@ -80,22 +84,24 @@
                 android:text="Follow up : "
                 android:textSize="20sp"
                 android:textStyle="bold"
-
+                android:textColor="#000000"
                 android:padding="5dp"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textSize="20sp"
-
-                android:id="@+id/txt_followup"></TextView>
+                android:textColor="#000000"
+                android:id="@+id/txt_followup"/>
         </LinearLayout>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Take Medicine in : "
                 android:textStyle="bold"
-                android:textSize="20sp"></TextView>
+                android:padding="5dp"
+                android:textColor="#000000"
+                android:textSize="20sp"/>
             <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
