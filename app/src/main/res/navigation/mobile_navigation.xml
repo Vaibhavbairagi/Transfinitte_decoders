@@ -30,6 +30,12 @@
         tools:layout="@layout/fragment_tools" />
 
     <fragment
+        android:id="@+id/med_records"
+        android:label="med"
+        android:name="com.example.transfinitte_decoders.ui.medicalrecords.MedicalRecords"
+        tools:layout="@layout/medical_records_fragment"></fragment>
+
+    <fragment
         android:id="@+id/nav_share"
         android:name="com.example.transfinitte_decoders.ui.share.ShareFragment"
         android:label="@string/menu_share"
@@ -40,4 +46,5 @@
         android:name="com.example.transfinitte_decoders.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+
 </navigation>
