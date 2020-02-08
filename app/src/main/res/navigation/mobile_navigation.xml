@@ -33,7 +33,7 @@
         android:id="@+id/med_records"
         android:label="med"
         android:name="com.example.transfinitte_decoders.ui.medicalrecords.MedicalRecords"
-        tools:layout="@layout/medical_records_fragment"></fragment>
+        tools:layout="@layout/medical_records_fragment"/>
 
     <fragment
         android:id="@+id/nav_share"
