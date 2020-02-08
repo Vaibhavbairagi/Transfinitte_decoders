@@ -37,8 +37,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static UserPrescriptionRecords data;
     private AppBarConfiguration mAppBarConfiguration;
-    InventoryRecords data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_tools, R.id.med_records, R.id.nav_share, R.id.nav_send)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -80,20 +80,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        /*FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("title", "inventory").get()
+        FirebaseFirestore.getInstance().collection("Users").whereEqualTo("userId", "naya").get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                                data = documentSnapshot.toObject(InventoryRecords.class);
+                                data = documentSnapshot.toObject(UserPrescriptionRecords.class);
                             }
                         } else {
                             Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-        Log.d("TAG", "onStart: ");*/
+
     }
 
     @Override

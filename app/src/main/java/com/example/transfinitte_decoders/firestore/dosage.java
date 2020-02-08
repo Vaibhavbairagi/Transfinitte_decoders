@@ -1,7 +1,7 @@
 package com.example.transfinitte_decoders.firestore;
 
 public class dosage{
-    String medicine;
+    /*String medicine;
     int perDay;
 
     public dosage() {
@@ -26,5 +26,5 @@ public class dosage{
     public dosage(String medicine, int perDay) {
         this.medicine = medicine;
         this.perDay = perDay;
-    }
+    }*/
 }

@@ -5,33 +5,72 @@ import java.util.List;
 
 public class Prescription {
 
-    String diagnosis;
-    String symptoms;
-    List<dosage> meds;
-    String followUp;
-    String doctor;
+    String diagnosissymptoms; //
+    String meds; //
+    String followUp; //
+    String doctor; //
+    boolean morning,afternoon,night; //
 
-    public String getDiagnosis() {
-        return diagnosis;
+
+    public Prescription() {
     }
 
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
+    public boolean isMorning() {
+        return morning;
     }
 
-    public String getSymptoms() {
-        return symptoms;
+    public void setMorning(boolean morning) {
+        this.morning = morning;
     }
 
-    public void setSymptoms(String symptoms) {
-        this.symptoms = symptoms;
+    public boolean isAfternoon() {
+        return afternoon;
     }
 
-    public List<dosage> getMeds() {
+    public void setAfternoon(boolean afternoon) {
+        this.afternoon = afternoon;
+    }
+
+    public boolean isNight() {
+        return night;
+    }
+
+    public void setNight(boolean night) {
+        this.night = night;
+    }
+
+    public String getDiagnosissymptoms() {
+        return diagnosissymptoms;
+    }
+
+    public void setDiagnosissymptoms(String diagnosissymptoms) {
+        this.diagnosissymptoms = diagnosissymptoms;
+    }
+
+
+    public String getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(String doctor) {
+        this.doctor = doctor;
+    }
+
+    public Prescription(String diagnosissymptoms, String meds, String followUp, String doctor, boolean morning, boolean afternoon, boolean night) {
+        this.diagnosissymptoms = diagnosissymptoms;
+        this.meds = meds;
+        this.followUp = followUp;
+        this.doctor = doctor;
+        this.morning = morning;
+        this.afternoon = afternoon;
+        this.night = night;
+    }
+
+    public String getMeds() {
         return meds;
     }
 
-    public void setMeds(List<dosage> meds) {
+    public void setMeds(String meds) {
         this.meds = meds;
     }
 
@@ -43,19 +82,5 @@ public class Prescription {
         this.followUp = followUp;
     }
 
-    public Prescription(String diagnosis, String symptoms, List<dosage> meds, String followUp, String doctor) {
-        this.diagnosis = diagnosis;
-        this.symptoms = symptoms;
-        this.meds = meds;
-        this.followUp = followUp;
-        this.doctor = doctor;
-    }
 
-    public Prescription() {
-        meds = new ArrayList<>();
-        diagnosis=symptoms=followUp=doctor="NONE";
-        meds.add(new dosage("paracetamol",10));
-        meds.add(new dosage("paracetamol",10));
-        meds.add(new dosage("paracetamol",10));
-    }
 }
