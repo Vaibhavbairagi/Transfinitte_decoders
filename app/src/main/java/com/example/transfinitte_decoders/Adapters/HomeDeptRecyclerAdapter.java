@@ -1,5 +1,6 @@
 package com.example.transfinitte_decoders.Adapters;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.transfinitte_decoders.DoctorsActivity;
 import com.example.transfinitte_decoders.R;
 import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
 
@@ -26,8 +28,17 @@ public class HomeDeptRecyclerAdapter extends RecyclerView.Adapter<HomeDeptRecycl
     }
     @NonNull
     @Override
-    public MyDeptViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyDeptViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.cutsom_dept_layout_item,parent,false);
+        final TextView textView=view.findViewById(R.id.dept_name);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(parent.getContext(),DoctorsActivity.class);
+                intent.putExtra("dept",textView.getText());
+                parent.getContext().startActivity(intent);
+            }
+        });
         return new MyDeptViewHolder(view);
     }
 

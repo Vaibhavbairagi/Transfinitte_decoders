@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -33,11 +34,25 @@
                     android:layout_height="247dp"
                     android:layout_below="@+id/home_t1"
                     android:layout_margin="10dp" />
+                <View
+                    android:id="@+id/v2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_below="@+id/home_view_pager"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="#995d5d5d" />
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/home_view_pager"
+                    android:layout_below="@+id/v2"
                     android:id="@+id/home_departments_recycler_view"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_below="@+id/home_departments_recycler_view"/>
             </RelativeLayout>
         </ScrollView>
 
@@ -72,5 +87,6 @@
         android:id="@+id/bottom_sheet_bg"
         android:background="#e6000000"
         android:visibility="gone"/>
+
     <include layout="@layout/home_bottom_sheet"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
