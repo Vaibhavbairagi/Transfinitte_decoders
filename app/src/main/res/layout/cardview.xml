@@ -138,7 +138,7 @@
                 android:textColor="@color/colorAccent"
                 android:clickable="true"
                 android:id="@+id/feedback"
-                android:text="Feedback"/>
+                android:text="Add Feedback"/>
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

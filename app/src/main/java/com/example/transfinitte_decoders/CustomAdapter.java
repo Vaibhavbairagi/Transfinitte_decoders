@@ -71,7 +71,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         mo.setChecked(dataSet.get(listPosition).isMorning());
         af.setChecked(dataSet.get(listPosition).isAfternoon());
         ni.setChecked(dataSet.get(listPosition).isNight());
-        feedback.setText("Feedback " + dataSet.get(listPosition).getFeedback());
+        if(dataSet.get(listPosition).getFeedback()!=null)
+        feedback.setText("Feedback - " +dataSet.get(listPosition).getFeedback());
 
         feedback.setOnClickListener(new View.OnClickListener() {
             @Override
