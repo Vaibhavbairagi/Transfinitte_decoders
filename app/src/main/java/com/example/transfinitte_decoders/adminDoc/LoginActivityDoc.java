@@ -57,7 +57,7 @@ public class LoginActivityDoc extends AppCompatActivity {
             }
         });
         if (mAuth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivityDoc.this, MainActivity.class));
+            startActivity(new Intent(LoginActivityDoc.this, Doctor_Activity.class));
             finish();
         }
         createAccount.setOnClickListener(new View.OnClickListener() {
@@ -113,12 +113,15 @@ public class LoginActivityDoc extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(!task.isSuccessful()){
-                        Toast.makeText(getApplicationContext(),"Login In Failed, Try Again "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Login In Failed, Try Again ",Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.INVISIBLE);
                     }
                     else{
-                        Toast.makeText(getApplicationContext(),"Login Successful "+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),"Login Successful ",Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.INVISIBLE);
+                        Intent intent = new Intent(LoginActivityDoc.this, Doctor_Activity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 }
             });
