@@ -80,6 +80,19 @@ public class Medical_Report extends AppCompatActivity {
                 Prescription prescription = new Prescription(symptoms.getText().toString(),med.getText().toString(),followup.getText().toString(),"mohan",morning.isChecked(),afternoon.isChecked(),night.isChecked());
                 data.getPrescriptions().add(prescription);
                 FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
+
+                if(rollno.getText().toString().length() == 9) {
+                    //Prescription prescription = new Prescription(symptoms.getText().toString(), med.getText().toString(), followup.getText().toString(), LoginActivityDoc.mAuth.getCurrentUser().getEmail(), morning.isChecked(), afternoon.isChecked(), night.isChecked());
+                    data.getPrescriptions().add(prescription);
+                    FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
+                    Toast.makeText(Medical_Report.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    rollno.setError("Invalid Roll no.");
+                    rollno.requestFocus();
+                }
+
+
                 //to be executed on clicking medical records
                 /*AlarmManager alarmMgr;
                 PendingIntent alarmIntent;
@@ -93,43 +106,10 @@ public class Medical_Report extends AppCompatActivity {
             }
         });
     }
-    public void scheduleNotification(Context context, long delay, int notificationId) {//delay is after how much time(in millis) from current time you want to schedule the notification
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context)
-                .setContentTitle("NITT Hospital")
-                .setContentText("Time for your Meds")
-                .setAutoCancel(true)
-                .setSmallIcon(R.drawable.medicine)
-                .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
 
-        Intent intent = new Intent(context, LoginActivityDoc.class);
-        PendingIntent activity = PendingIntent.getActivity(context, notificationId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-        builder.setContentIntent(activity);
 
-        Notification notification = builder.build();
 
-        Intent notificationIntent = new Intent(context, MyNotificationPublisher.class);
-        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION_ID, notificationId);
-        notificationIntent.putExtra(MyNotificationPublisher.NOTIFICATION, notification);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 
-        long futureInMillis = SystemClock.elapsedRealtime() + delay;
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.setExact(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, pendingIntent);
-    }
-
-                if(rollno.getText().toString().length() == 9) {
-                    Prescription prescription = new Prescription(symptoms.getText().toString(), med.getText().toString(), followup.getText().toString(), LoginActivityDoc.mAuth.getCurrentUser().getEmail(), morning.isChecked(), afternoon.isChecked(), night.isChecked());
-                    data.getPrescriptions().add(prescription);
-                    FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
-                    Toast.makeText(Medical_Report.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    rollno.setError("Invalid Roll no.");
-                    rollno.requestFocus();
-                }
-            }
-        });
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.logout_for_admin_menu, menu);
