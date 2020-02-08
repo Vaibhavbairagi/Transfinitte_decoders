@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/nav_tools"
-        android:name="com.example.transfinitte_decoders.ui.tools.ToolsFragment"
+        android:name="com.example.transfinitte_decoders.ui.dispenser.DispenserFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_tools" />
 
