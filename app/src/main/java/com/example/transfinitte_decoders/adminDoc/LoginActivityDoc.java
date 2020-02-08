@@ -28,7 +28,7 @@ public class LoginActivityDoc extends AppCompatActivity {
     Button login;
     CheckBox showPassword;
     String emailTxt,passwordTxt;
-    private FirebaseAuth mAuth;
+    public static FirebaseAuth mAuth;
     TextView createAccount,forgetPassword;
     Boolean loginMode = true;
     ProgressBar progressBar;
