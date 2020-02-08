@@ -9,21 +9,29 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.transfinitte_decoders.Adapters.HomeDeptRecyclerAdapter;
 import com.example.transfinitte_decoders.Adapters.HomeSliderAdapter;
+import com.example.transfinitte_decoders.MainActivity;
 import com.example.transfinitte_decoders.R;
+import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
 import com.example.transfinitte_decoders.pojos.HomeSliderPojo;
 import com.example.transfinitte_decoders.utils.MyBounceInterpolator;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -38,6 +46,8 @@ public class HomeFragment extends Fragment {
     private Button sosButton;
     private RelativeLayout bottom_sheet,bottom_sheet_bg,b1,b2;
     private BottomSheetBehavior sheetBehavior;
+    private RecyclerView recyclerView;
+    public static HomeDeptRecyclerAdapter recyclerAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -50,8 +60,12 @@ public class HomeFragment extends Fragment {
         b1= root.findViewById(R.id.b1);
         b2=root.findViewById(R.id.b2);
         sheetBehavior=BottomSheetBehavior.from(bottom_sheet);
+        recyclerView= root.findViewById(R.id.home_departments_recycler_view);
 
         setUpViewPager();
+
+        setUpDeptRecyclerView();
+
         sosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -111,6 +125,16 @@ public class HomeFragment extends Fragment {
 
         return root;
     }
+
+    private void setUpDeptRecyclerView() {
+
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerAdapter= new HomeDeptRecyclerAdapter(MainActivity.recyclerdata);
+        recyclerView.setAdapter(recyclerAdapter);
+        recyclerAdapter.setdata(MainActivity.recyclerdata);
+    }
+
     private void setUpViewPager(){
 
         ArrayList<HomeSliderPojo> cardComponents = new ArrayList<>();

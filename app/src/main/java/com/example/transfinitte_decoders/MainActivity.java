@@ -3,18 +3,25 @@ package com.example.transfinitte_decoders;
 import android.content.Intent;
 import android.os.Bundle;
 
+
 import com.example.transfinitte_decoders.adminDoc.Doctor_Activity;
 import com.example.transfinitte_decoders.adminDoc.LoginActivityDoc;
 import com.example.transfinitte_decoders.adminDoc.dispenser_activity;
 import com.example.transfinitte_decoders.firestore.InventoryRecords;
 import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
+
+import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
+import com.example.transfinitte_decoders.pojos.DocsPojo;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
+
 import android.view.MenuItem;
+
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -24,8 +31,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -39,6 +48,7 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -46,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
     public static UserPrescriptionRecords data;
     public static InventoryRecords data_dispenser;
     private AppBarConfiguration mAppBarConfiguration;
-
+    public static DepartmentsPojo recyclerdata;
+    public static DocsPojo docsData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Log.d("TAG", db.toString());
         setSupportActionBar(toolbar);
+        recyclerdata = new DepartmentsPojo();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -119,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
@@ -134,5 +145,30 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return true;
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("docid", "doctors").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("TAG", task.getResult().toString());
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                Log.d("TAGR",  documentSnapshot.toString());
+                                recyclerdata = documentSnapshot.toObject(DepartmentsPojo.class);
+                                HomeFragment.recyclerAdapter.setdata(recyclerdata);
+                                Log.d("TAGP", recyclerdata.toString());
+
+                            }
+                        } else {
+                            Log.d("TAG", "task.().toString()");
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
     }
 }
