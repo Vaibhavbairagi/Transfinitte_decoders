@@ -42,7 +42,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 public class location extends AppCompatActivity {
-    String user = "user3"; //phone number
+    String user = "9983208880"; //phone number
     String lat;
     String lon;
     double latitude;
@@ -163,11 +163,12 @@ public class location extends AppCompatActivity {
     public void queryGeoFire() {
         geoQuery = geofirestore.queryAtLocation(new GeoPoint(latitude, longitude), 1);
         geoQuery.addGeoQueryEventListener(new GeoQueryEventListener() {
+
             @Override
             public void onKeyEntered(String s, GeoPoint geoPoint) {
                 if(!(user.equalsIgnoreCase(s))) {
                     Toast.makeText(getApplicationContext(), "Volunteer within 1 km", Toast.LENGTH_LONG);
-                    //Log.d("geoPoint",String.valueOf(geoPoint.getLatitude()));
+                    Log.d("geoPoint","Volunt");
                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + user));
                     startActivity(intent);
                 }

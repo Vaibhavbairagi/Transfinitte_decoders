@@ -35,6 +35,7 @@ import com.example.transfinitte_decoders.Adapters.HomeDeptRecyclerAdapter;
 import com.example.transfinitte_decoders.Adapters.HomeSliderAdapter;
 import com.example.transfinitte_decoders.MainActivity;
 import com.example.transfinitte_decoders.R;
+import com.example.transfinitte_decoders.location;
 import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
 import com.example.transfinitte_decoders.pojos.HomeSliderPojo;
 import com.example.transfinitte_decoders.utils.MyBounceInterpolator;
@@ -94,7 +95,13 @@ public class HomeFragment extends Fragment {
                 }
             }
         });
-
+        btn_volunteer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), location.class);
+                startActivity(intent);
+            }
+        });
         btn_apollo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
