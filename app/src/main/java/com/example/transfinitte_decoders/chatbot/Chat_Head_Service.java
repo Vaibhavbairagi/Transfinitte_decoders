@@ -96,11 +96,15 @@ public class Chat_Head_Service extends Service {
                     chatListAdapter.notifyItemInserted(chat.size()-1);
                 }else if(editText.getText().toString().toLowerCase().contains("wound")||editText.getText().toString().toLowerCase().contains("cut")){
                     chat.add(new ChatMessage(editText.getText().toString(),"Keeping the area clean and applying a thin layer of antibiotic ointment can help prevent infection"));
+                    chatListAdapter.notifyItemInserted(chat.size()-1);
+
                 }
                 else if(editText.getText().toString().toLowerCase().contains("burn")||editText.getText().toString().toLowerCase().contains("blisters")){
                     chat.add(new ChatMessage(editText.getText().toString(),"immediately get the person away from the heat source to stop the burning\n" +
                             "cool the burn with cool or lukewarm running water for 20 minutes \n" +
                             "remove any clothing or jewellery that's near the burnt area "));
+                    chatListAdapter.notifyItemInserted(chat.size()-1);
+
                 }
                 else if(editText.getText().toString().toLowerCase().contains("drown")||editText.getText().toString().toLowerCase().contains("sink")){
                     chat.add(new ChatMessage(editText.getText().toString(), "Get Help. Notify a lifeguard, if one is close.\n" +

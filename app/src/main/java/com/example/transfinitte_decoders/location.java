@@ -145,7 +145,7 @@ public class location extends AppCompatActivity {
                                     });
 
                                     Log.d("LAT",lat.toString());
-                                    tv.setText(lat);
+                                    tv.setText("Found a volunteer within 1 km.");
                                     queryGeoFire();
                                 }
                             }
