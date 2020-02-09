@@ -84,19 +84,31 @@ public class Chat_Head_Service extends Service {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(editText.getText().toString().contains("First Aid")){
-                    chat.add(new ChatMessage(editText.getText().toString(),"Whats up?"));
+                if(editText.getText().toString().toLowerCase().contains("first aid")||editText.getText().toString().toLowerCase().contains("help")){
+                    chat.add(new ChatMessage(editText.getText().toString(),"About what"));
                     chatListAdapter.notifyItemInserted(chat.size()-1);
-                }else if(editText.getText().toString().contains("Hi")){
+                }else if(editText.getText().toString().toLowerCase().contains("hi")||editText.getText().toString().toLowerCase().contains("hello")||editText.getText().toString().toLowerCase().contains("hey")){
                     chat.add(new ChatMessage(editText.getText().toString(),"Vannakum"));
                     chatListAdapter.notifyItemInserted(chat.size()-1);
-                }else if(editText.getText().toString().contains("Fracture")){
+                }else if(editText.getText().toString().toLowerCase().contains("fracture")){
                     chat.add(new ChatMessage(editText.getText().toString(),
                             "Stop any bleeding. Apply pressure to the wound with a sterile bandage, a clean cloth or a clean piece of clothing.\n" + "Press SOS if extreme"));
                     chatListAdapter.notifyItemInserted(chat.size()-1);
-                }else if(editText.getText().toString().contains("Wound")||editText.getText().toString().contains("C ut")){
+                }else if(editText.getText().toString().toLowerCase().contains("wound")||editText.getText().toString().toLowerCase().contains("cut")){
                     chat.add(new ChatMessage(editText.getText().toString(),"Keeping the area clean and applying a thin layer of antibiotic ointment can help prevent infection"));
                 }
+                else if(editText.getText().toString().toLowerCase().contains("burn")||editText.getText().toString().toLowerCase().contains("blisters")){
+                    chat.add(new ChatMessage(editText.getText().toString(),"immediately get the person away from the heat source to stop the burning\n" +
+                            "cool the burn with cool or lukewarm running water for 20 minutes \n" +
+                            "remove any clothing or jewellery that's near the burnt area "));
+                }
+                else if(editText.getText().toString().toLowerCase().contains("drown")||editText.getText().toString().toLowerCase().contains("sink")){
+                    chat.add(new ChatMessage(editText.getText().toString(), "Get Help. Notify a lifeguard, if one is close.\n" +
+                                                        "Check for Breathing. Place your ear next to the person's mouth and nose.\n" +
+                            "If the Person is Not Breathing, Check Pulse.\n" +
+                            "If There is No Pulse, Start CPR.\n"));
+                }
+                else if(editText.getText().toString().contains(""))
                 editText.setText("");
             }
         });

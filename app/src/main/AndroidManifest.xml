@@ -3,11 +3,11 @@
     package="com.example.transfinitte_decoders">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -18,10 +18,12 @@
         android:theme="@style/AppTheme">
         <activity android:name=".adminDoc.ambulance"></activity>
         <activity android:name=".adminDoc.Doctor_Activity" />
-        <activity android:name=".adminDoc.Medical_Report" />
-        <activity android:name=".service" />
-        <activity android:name=".adminDoc.dispenser_activity" />
-        <activity android:name=".DoctorsActivity" />
+        <activity android:name=".adminDoc.Medical_Report"/>
+
+        <activity android:name=".service"></activity>
+        <activity android:name=".adminDoc.dispenser_activity"></activity>
+        <activity android:name=".DoctorsActivity"/>
+        <activity android:name=".location"/>
         <activity android:name=".adminDoc.LoginActivityDoc">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
