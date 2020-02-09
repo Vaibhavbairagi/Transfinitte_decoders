@@ -1,9 +1,6 @@
 package com.example.transfinitte_decoders.adminDoc;
 
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,15 +14,12 @@ import android.widget.Toast;
 import com.example.transfinitte_decoders.R;
 import com.example.transfinitte_decoders.firestore.Prescription;
 import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
-import com.example.transfinitte_decoders.notification.AlarmReciever;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.Calendar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -85,17 +79,6 @@ public class Medical_Report extends AppCompatActivity {
                     rollno.setError("Invalid Roll no.");
                     rollno.requestFocus();
                 }
-
-
-                //to be executed on clicking medical records
-                AlarmManager alarmMgr;
-                PendingIntent alarmIntent;
-                alarmMgr = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                Intent intent = new Intent(getApplicationContext(), AlarmReciever.class);
-                alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
-                Calendar calendar = Calendar.getInstance();
-                alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,calendar.getTimeInMillis()+1000,
-                        AlarmManager.INTERVAL_DAY, alarmIntent);
                 if(rollno.getText().toString().length() == 9) {
                     data.getPrescriptions().add(prescription);
                     FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
