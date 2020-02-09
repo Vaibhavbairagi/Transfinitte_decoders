@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.transfinitte_decoders.firestore.Prescription;
+import com.example.transfinitte_decoders.notification.AlarmReciever;
 
 import java.util.Calendar;
 import java.util.List;
@@ -108,7 +108,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
         AlarmManager alarmMgr;
         PendingIntent alarmIntent;
         alarmMgr = (AlarmManager)con.getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(con, AlarmReceiver.class);
+        Intent intent = new Intent(con, AlarmReciever.class);
         Calendar calendar = Calendar.getInstance();
         alarmIntent = PendingIntent.getBroadcast(con, 0, intent, 0);
         if(mo.isChecked()){
