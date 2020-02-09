@@ -247,35 +247,36 @@ public class HomeFragment extends Fragment {
     private void fetchDiseaseDetails(ArrayList<HomeSliderPojo> cardComponents) {
         cardComponents.add(new HomeSliderPojo(R.drawable.home_cold_disease_image,"COLD"));
         ArrayList<String> a1= new ArrayList<>();
-        a1.add("1Remedy1");
-        a1.add("1Remedy2");
-        a1.add("1Remedy3");
-        a1.add("1Remedy4");
-        a1.add("1Remedy5");
+        a1.add("Stay Hydrated.");
+        a1.add("Sip warm liquids.");
+        a1.add("Add moisture to the air.");
+        a1.add("Take rest.");
+        a1.add("Drink Orange Juice.");
         cardComponents.get(0).setRemedies(a1);
         cardComponents.add(new HomeSliderPojo(R.drawable.home_cough_disease_image,"COUGH"));
         ArrayList<String> a2= new ArrayList<>();
-        a2.add("2Remedy1");
-        a2.add("2Remedy2");
-        a2.add("2Remedy3");
-        a2.add("2Remedy4");
-        a2.add("2Remedy5");
+
+        a2.add("Do Salt-Water gargle.");
+        a2.add("Drink Honey tea.");
+        a2.add("Drink Ginger tea.");
+        a2.add("Stay hydrated.");
+        a2.add("Eat Marshmallow root.");
         cardComponents.get(1).setRemedies(a2);
         cardComponents.add(new HomeSliderPojo(R.drawable.home_fever_disease_image,"FEVER"));
         ArrayList<String> a3= new ArrayList<>();
-        a3.add("3Remedy1");
-        a3.add("3Remedy2");
-        a3.add("3Remedy3");
-        a3.add("3Remedy4");
-        a3.add("3Remedy5");
+        a3.add("Take a sponge bath with lukewarm water.");
+        a3.add("Wear light pajamas or clothing.");
+        a3.add("Get plenty of water.");
+        a3.add("Drink plenty of water.");
+        a3.add("Eat popsicles.");
         cardComponents.get(2).setRemedies(a3);
         cardComponents.add(new HomeSliderPojo(R.drawable.home_bodypain_disease_image,"BODY PAIN"));
         ArrayList<String> a4= new ArrayList<>();
-        a4.add("4Remedy1");
-        a4.add("4Remedy2");
-        a4.add("4Remedy3");
-        a4.add("4Remedy4");
-        a4.add("4Remedy5");
+        a4.add("Drink ginger tea.");
+        a4.add("Use hot and cold compresses.");
+        a4.add("Drink apple cider vinegar.");
+        a4.add("Give rest to your body.");
+        a4.add("apply ice to the affected area.");
         cardComponents.get(3).setRemedies(a4);
     }
 
