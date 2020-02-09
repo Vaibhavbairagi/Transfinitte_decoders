@@ -98,7 +98,12 @@ public class HomeFragment extends Fragment {
         btn_apollo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onCall();
+                if(isPermissionGranted()){
+                    onCall();
+                }
+                else{
+                    Toast.makeText(context, "Permissions not granted", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         setUpViewPager();
