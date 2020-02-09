@@ -1,7 +1,11 @@
 package com.example.transfinitte_decoders;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +13,14 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.transfinitte_decoders.firestore.Prescription;
+
+import java.util.Calendar;
 import java.util.List;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
@@ -97,6 +104,25 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 builder.show();
             }
         });
+
+        AlarmManager alarmMgr;
+        PendingIntent alarmIntent;
+        alarmMgr = (AlarmManager)con.getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(con, AlarmReceiver.class);
+        Calendar calendar = Calendar.getInstance();
+        alarmIntent = PendingIntent.getBroadcast(con, 0, intent, 0);
+        if(mo.isChecked()){
+            alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                calendar.getTimeInMillis()+1000,AlarmManager.INTERVAL_DAY, alarmIntent);
+        }
+        if(af.isChecked()){
+            alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    calendar.getTimeInMillis()+2000,AlarmManager.INTERVAL_DAY, alarmIntent);
+        }
+        if(ni.isChecked()){
+            alarmMgr.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                    calendar.getTimeInMillis()+3000,AlarmManager.INTERVAL_DAY, alarmIntent);
+        }
 
     }
 
