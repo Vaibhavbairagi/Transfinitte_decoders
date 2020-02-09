@@ -184,8 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
                 break;
-
-
         }
         return true;
     }
