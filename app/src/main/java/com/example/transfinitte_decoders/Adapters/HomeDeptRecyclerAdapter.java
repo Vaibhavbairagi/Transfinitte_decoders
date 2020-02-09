@@ -1,6 +1,7 @@
 package com.example.transfinitte_decoders.Adapters;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.transfinitte_decoders.DoctorsActivity;
 import com.example.transfinitte_decoders.R;
 import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
+import com.example.transfinitte_decoders.ui.home.HomeFragment;
 
 import java.util.ArrayList;
 
@@ -24,7 +26,17 @@ public class HomeDeptRecyclerAdapter extends RecyclerView.Adapter<HomeDeptRecycl
 
     public void setdata(DepartmentsPojo dept){
         deptNames=dept;
+        Handler handler= new Handler();
         notifyDataSetChanged();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                HomeFragment.progressBar.setVisibility(View.GONE);
+                HomeFragment.recyclerView.setVisibility(View.VISIBLE);
+
+            }
+        },1000);
     }
     @NonNull
     @Override

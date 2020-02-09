@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -54,9 +55,10 @@ public class HomeFragment extends Fragment {
     private Button sosButton;
     private RelativeLayout bottom_sheet,bottom_sheet_bg,b1,b2;
     private BottomSheetBehavior sheetBehavior;
-    private RecyclerView recyclerView;
+    public static RecyclerView recyclerView;
     public static HomeDeptRecyclerAdapter recyclerAdapter;
     Button btn_ambulance, btn_apollo, btn_volunteer;
+    public static ProgressBar progressBar;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -70,6 +72,7 @@ public class HomeFragment extends Fragment {
         b2=root.findViewById(R.id.b2);
         sheetBehavior=BottomSheetBehavior.from(bottom_sheet);
         recyclerView= root.findViewById(R.id.home_departments_recycler_view);
+        progressBar= root.findViewById(R.id.progress_bar);
 
         btn_ambulance = root.findViewById(R.id.btn_ambulance);
         btn_apollo = root.findViewById(R.id.btn_apollo);
