@@ -10,12 +10,14 @@
         android:layout_height="match_parent">
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/scrollView">
+            android:layout_height="match_parent">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:id="@+id/home_t1"
                     android:layout_width="match_parent"
@@ -34,35 +36,36 @@
                     android:layout_height="247dp"
                     android:layout_below="@+id/home_t1"
                     android:layout_margin="10dp" />
+
                 <View
                     android:id="@+id/v2"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
                     android:layout_below="@+id/home_view_pager"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="12dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="20dp"
                     android:background="#995d5d5d" />
+
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_departments_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/v2"
-                    android:id="@+id/home_departments_recycler_view"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_below="@+id/home_departments_recycler_view"/>
+                    android:layout_below="@+id/v2" />
+                
             </RelativeLayout>
         </ScrollView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/sos_card"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
             android:layout_alignBottom="@+id/scrollView"
+            android:layout_alignParentEnd="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
             android:clickable="true"
             android:elevation="15dp"
@@ -73,20 +76,21 @@
 
             <Button
                 android:id="@+id/sos_button"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:background="@color/colorPrimary"
                 android:text="SOS"
                 android:textColor="#ffffff"
-                android:textSize="30dp" />
+                android:textSize="20dp" />
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/bottom_sheet_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/bottom_sheet_bg"
         android:background="#e6000000"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
-    <include layout="@layout/home_bottom_sheet"/>
+    <include layout="@layout/home_bottom_sheet" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -74,6 +74,19 @@ public class Medical_Report extends AppCompatActivity {
                 Prescription prescription = new Prescription(symptoms.getText().toString(),med.getText().toString(),followup.getText().toString(),"mohan",morning.isChecked(),afternoon.isChecked(),night.isChecked());
                 data.getPrescriptions().add(prescription);
                 FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
+
+                if(rollno.getText().toString().length() == 9) {
+                    //Prescription prescription = new Prescription(symptoms.getText().toString(), med.getText().toString(), followup.getText().toString(), LoginActivityDoc.mAuth.getCurrentUser().getEmail(), morning.isChecked(), afternoon.isChecked(), night.isChecked());
+                    data.getPrescriptions().add(prescription);
+                    FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
+                    Toast.makeText(Medical_Report.this, "Data submitted successfully", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    rollno.setError("Invalid Roll no.");
+                    rollno.requestFocus();
+                }
+
+
                 //to be executed on clicking medical records
                 AlarmManager alarmMgr;
                 PendingIntent alarmIntent;
@@ -95,6 +108,7 @@ public class Medical_Report extends AppCompatActivity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.logout_for_admin_menu, menu);
