@@ -35,6 +35,10 @@ import com.example.transfinitte_decoders.Adapters.HomeDeptRecyclerAdapter;
 import com.example.transfinitte_decoders.Adapters.HomeSliderAdapter;
 import com.example.transfinitte_decoders.MainActivity;
 import com.example.transfinitte_decoders.R;
+
+import com.example.transfinitte_decoders.adminDoc.ambulance;
+import com.example.transfinitte_decoders.adminDoc.data;
+import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
 import com.example.transfinitte_decoders.location;
 import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
 import com.example.transfinitte_decoders.pojos.HomeSliderPojo;
@@ -63,6 +67,7 @@ public class HomeFragment extends Fragment {
     public static HomeDeptRecyclerAdapter recyclerAdapter;
     Button btn_ambulance, btn_apollo, btn_volunteer;
     public static ProgressBar progressBar;
+    data available;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -81,6 +86,20 @@ public class HomeFragment extends Fragment {
         btn_ambulance = root.findViewById(R.id.btn_ambulance);
         btn_apollo = root.findViewById(R.id.btn_apollo);
         btn_volunteer = root.findViewById(R.id.btn_volunteer);
+        FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("title", "loc").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                available = documentSnapshot.toObject(data.class);
+
+                            }
+                        } else {
+                            //Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
 
         btn_ambulance.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +107,8 @@ public class HomeFragment extends Fragment {
                 if(isPermissionGranted()){
                     Intent callIntent = new Intent(Intent.ACTION_CALL);
                     callIntent.setData(Uri.parse("tel:8056167057"));
-                    startActivity(callIntent);
+                    if(available.getAvailable())startActivity(callIntent);
+                    else Toast.makeText(context, " Not Available", Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(context, "Permissions not granted", Toast.LENGTH_SHORT).show();
