@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Prescription {
 
-    String diagnosissymptoms; //
-    String meds; //
-    String followUp; //
-    String doctor; //
-    boolean morning,afternoon,night; //
-
+    String diagnosissymptoms;
+    String meds;
+    String followUp;
+    String doctor;
+    boolean morning,afternoon,night;
+    String feedback;
 
     public Prescription() {
     }
@@ -64,6 +64,25 @@ public class Prescription {
         this.morning = morning;
         this.afternoon = afternoon;
         this.night = night;
+    }
+
+    public String getFeedback() {
+        return feedback;
+    }
+
+    public void setFeedback(String feedback) {
+        this.feedback = feedback;
+    }
+
+    public Prescription(String diagnosissymptoms, String meds, String followUp, String doctor, boolean morning, boolean afternoon, boolean night, String feedback) {
+        this.diagnosissymptoms = diagnosissymptoms;
+        this.meds = meds;
+        this.followUp = followUp;
+        this.doctor = doctor;
+        this.morning = morning;
+        this.afternoon = afternoon;
+        this.night = night;
+        this.feedback = feedback;
     }
 
     public String getMeds() {

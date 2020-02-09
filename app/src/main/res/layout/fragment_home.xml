@@ -48,12 +48,20 @@
                     android:layout_marginBottom="20dp"
                     android:background="#995d5d5d" />
 
+                <ProgressBar
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/progress_bar"
+                    android:indeterminate="true"
+                    android:layout_below="@+id/v2"/>
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/home_departments_recycler_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_below="@+id/v2" />
-                
+                    android:visibility="gone"
+                    android:layout_below="@+id/progress_bar" />
+
             </RelativeLayout>
         </ScrollView>
 
