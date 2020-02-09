@@ -109,6 +109,7 @@ public class HomeSliderAdapter extends PagerAdapter {
                 sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
         });
+
         container.addView(cardView);
         return cardView;
     }

@@ -1,8 +1,14 @@
 package com.example.transfinitte_decoders.ui.home;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +17,32 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+
+import android.widget.Toast;
+
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.transfinitte_decoders.Adapters.HomeDeptRecyclerAdapter;
 import com.example.transfinitte_decoders.Adapters.HomeSliderAdapter;
+import com.example.transfinitte_decoders.MainActivity;
 import com.example.transfinitte_decoders.R;
+import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
 import com.example.transfinitte_decoders.pojos.HomeSliderPojo;
 import com.example.transfinitte_decoders.utils.MyBounceInterpolator;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -35,6 +57,9 @@ public class HomeFragment extends Fragment {
     private Button sosButton;
     private RelativeLayout bottom_sheet,bottom_sheet_bg,b1,b2;
     private BottomSheetBehavior sheetBehavior;
+    private RecyclerView recyclerView;
+    public static HomeDeptRecyclerAdapter recyclerAdapter;
+    Button btn_ambulance, btn_apollo, btn_volunteer;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
@@ -47,8 +72,36 @@ public class HomeFragment extends Fragment {
         b1= root.findViewById(R.id.b1);
         b2=root.findViewById(R.id.b2);
         sheetBehavior=BottomSheetBehavior.from(bottom_sheet);
+        recyclerView= root.findViewById(R.id.home_departments_recycler_view);
 
+        btn_ambulance = root.findViewById(R.id.btn_ambulance);
+        btn_apollo = root.findViewById(R.id.btn_apollo);
+        btn_volunteer = root.findViewById(R.id.btn_volunteer);
+
+        btn_ambulance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isPermissionGranted()){
+                    Intent callIntent = new Intent(Intent.ACTION_CALL);
+                    callIntent.setData(Uri.parse("tel:8056167057"));
+                    startActivity(callIntent);
+                }
+                else{
+                    Toast.makeText(context, "Permissions not granted", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn_apollo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCall();
+            }
+        });
         setUpViewPager();
+
+        setUpDeptRecyclerView();
+
         sosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,8 +159,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
         return root;
     }
+
+    public void onCall(){
+        Intent callIntent = new Intent(Intent.ACTION_CALL);
+        callIntent.setData(Uri.parse("tel:8534898277"));
+        startActivity(callIntent);
+    }
+    private void setUpDeptRecyclerView() {
+
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerAdapter= new HomeDeptRecyclerAdapter(MainActivity.recyclerdata);
+        recyclerView.setAdapter(recyclerAdapter);
+        recyclerAdapter.setdata(MainActivity.recyclerdata);
+    }
+
     private void setUpViewPager(){
 
         ArrayList<HomeSliderPojo> cardComponents = new ArrayList<>();
@@ -182,4 +251,48 @@ public class HomeFragment extends Fragment {
         a4.add("4Remedy5");
         cardComponents.get(3).setRemedies(a4);
     }
+
+    public  boolean isPermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.CALL_PHONE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("TAG","Permission is granted");
+                return true;
+            } else {
+
+                Log.v("TAG","Permission is revoked");
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("TAG","Permission is granted");
+            return true;
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+
+            case 1: {
+
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getContext(), "Permission granted", Toast.LENGTH_SHORT).show();
+                    onCall();
+                } else {
+                    Toast.makeText(getContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+
 }

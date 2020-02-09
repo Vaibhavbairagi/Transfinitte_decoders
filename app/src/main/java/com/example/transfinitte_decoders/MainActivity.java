@@ -3,24 +3,41 @@ package com.example.transfinitte_decoders;
 import android.content.Intent;
 import android.os.Bundle;
 
+
+import com.example.transfinitte_decoders.adminDoc.Doctor_Activity;
+import com.example.transfinitte_decoders.adminDoc.LoginActivityDoc;
+import com.example.transfinitte_decoders.adminDoc.dispenser_activity;
 import com.example.transfinitte_decoders.firestore.InventoryRecords;
 import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
+
+import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
+import com.example.transfinitte_decoders.pojos.DocsPojo;
+
+import com.example.transfinitte_decoders.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import android.util.Log;
+
+import android.view.MenuItem;
+
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -33,12 +50,19 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
+import java.util.List;
+
+
 public class MainActivity extends AppCompatActivity {
 
     public static UserPrescriptionRecords data;
     public static InventoryRecords data_dispenser;
     private AppBarConfiguration mAppBarConfiguration;
-
+    public static DepartmentsPojo recyclerdata;
+    ActionBarDrawerToggle mDrawerToggle;
+    public static DocsPojo docsData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Log.d("TAG", db.toString());
         setSupportActionBar(toolbar);
+        recyclerdata = new DepartmentsPojo();
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
@@ -59,7 +84,17 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        setupToolbar();
+    }
 
+    private void setupToolbar() {
+        // Show menu icon
+        final ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);// will make the icon clickable and add the < at the left of the icon.
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();//for hamburger icon
     }
 
     @Override
@@ -105,6 +140,26 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+        FirebaseFirestore.getInstance().collection("Docs").whereEqualTo("docid", "doctors").get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("TAG", task.getResult().toString());
+                            for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
+                                Log.d("TAGR",  documentSnapshot.toString());
+                                recyclerdata = documentSnapshot.toObject(DepartmentsPojo.class);
+                                HomeFragment.recyclerAdapter.setdata(recyclerdata);
+                                Log.d("TAGP", recyclerdata.toString());
+
+                            }
+                        } else {
+                            Log.d("TAG", "task.().toString()");
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
 
     }
 
@@ -114,4 +169,25 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(mDrawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        switch (item.getItemId()){
+            case R.id.logout_main:
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(MainActivity.this, LoginActivityDoc.class);
+                startActivity(intent);
+                finish();
+                Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
+                break;
+
+
+        }
+        return true;
+    }
+
 }

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/service_message"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <TextView
+        android:id="@+id/chat_indra_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NITT HOSPITAL"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="12dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chat_indra_icon"
+        android:scrollbars="none"/>
+
+    <LinearLayout
+        android:id="@+id/chat_button_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/chat_recyclerView">
+
+        <EditText
+            android:id="@+id/edit_text"
+            android:textColor="@color/white"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"/>
+
+        <ImageButton
+            android:id="@+id/send_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_send"
+            android:layout_margin="1dp"
+            android:textAllCaps="false"
+            android:layout_gravity="center_vertical"
+            android:backgroundTint="@android:color/transparent"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
