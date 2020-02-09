@@ -12,7 +12,9 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Dispenser</string>
     <string name="menu_share">Contacts</string>
-    <string name="menu_send">Send</string>
+    
+     <string name="menu_send">Chat Bot</string>
+
     <string name="title_activity_login_doc">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
