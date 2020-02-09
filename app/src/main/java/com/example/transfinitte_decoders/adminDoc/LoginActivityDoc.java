@@ -1,7 +1,10 @@
 package com.example.transfinitte_decoders.adminDoc;
 
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
@@ -39,12 +42,19 @@ public class LoginActivityDoc extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton radioButton;
     private static final String TAG = "LoginActivity";
-
+    private static final int CODE_DRAW_OVER_OTHER_APP_PERMISSION = 2084;
     Boolean student;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_doc);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !Settings.canDrawOverlays(this)) {
+            //If the draw over permission is not available open the settings screen
+            //to grant the permission.
+            Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+                    Uri.parse("package:" + getPackageName()));
+            startActivityForResult(intent, CODE_DRAW_OVER_OTHER_APP_PERMISSION);
+        }
         email = findViewById(R.id.login_emailid);
         showPassword = findViewById(R.id.show_hide_password);
         forgetPassword = findViewById(R.id.forgot_password);
@@ -107,7 +117,17 @@ public class LoginActivityDoc extends AppCompatActivity {
             }
         });
     }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CODE_DRAW_OVER_OTHER_APP_PERMISSION) {
 
+            //Check if the permission is granted or not.
+            if (resultCode == RESULT_OK) {
+            } else { //Permission is not available
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
     boolean isEmailValid(CharSequence email) {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }

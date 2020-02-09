@@ -9,9 +9,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="10dp"
-        android:layout_margin="10dp"
+        android:layout_margin="10dp">
 
-        >
+
         <LinearLayout
             android:padding="10dp"
             android:layout_width="match_parent"
@@ -110,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Morning"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:id="@+id/mo"
                 android:clickable="false"
@@ -119,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Afternoon"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:clickable="false"
                 android:id="@+id/af"
@@ -129,11 +129,24 @@
                 android:layout_height="wrap_content"
                 android:text="Night"
                 android:id="@+id/ni"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:clickable="false"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="26dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorAccent"
+                android:clickable="true"
+                android:id="@+id/feedback"
+                android:text="Add Feedback"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

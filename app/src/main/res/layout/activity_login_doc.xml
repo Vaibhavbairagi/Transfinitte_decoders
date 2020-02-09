@@ -6,8 +6,23 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     tools:context=".adminDoc.LoginActivityDoc">
+
+    <ImageView
+        android:id="@+id/nitt"
+        android:layout_width="276dp"
+        android:layout_height="132dp"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/nitt_logo" />
     <LinearLayout
         android:id="@+id/login_layout"
+        android:layout_below="@+id/nitt"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
@@ -41,11 +56,15 @@
             android:padding="10dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="20dp"/>
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:background="@color/white_greyish" />
 
         <EditText
@@ -62,7 +81,9 @@
             android:padding="10dp"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="10dp"/>
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -77,7 +98,8 @@
                 android:text="Student"
                 android:textSize="20sp"
                 android:textColor="@color/white"
-                android:padding="20dp"/>
+                android:layout_gravity="start|center_vertical"
+                android:layout_margin="20dp"/>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -85,7 +107,9 @@
                 android:text="Doctor"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                android:padding = "20dp"/>
+                android:layout_gravity="end|center_vertical"
+                android:layout_margin = "20dp"
+                />
 
         </RadioGroup>
 
@@ -103,7 +127,9 @@
                 android:layout_weight="1"
                 android:text="@string/show_pwd"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
 
             <TextView
                 android:id="@+id/forgot_password"
@@ -114,7 +140,10 @@
                 android:padding="5dp"
                 android:text="@string/forgot"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                />
         </LinearLayout>
 
         <Button
@@ -127,7 +156,9 @@
             android:text="@string/login"
             android:textColor="#009688"
             android:textSize="17sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"/>
     </LinearLayout>
     <TextView
         android:id="@+id/createAccount"

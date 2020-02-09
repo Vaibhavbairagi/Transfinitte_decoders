@@ -40,12 +40,12 @@ public class ChatListAdapter extends RecyclerView.Adapter<ChatListAdapter.ViewHo
         TextView send = holder.sendMessage;
         TextView receive = holder.receiveMessage;
         send.setText(chatMessage.getmSendMessage());
-        receive.setText(chatMessage.getmSendMessage());
+        receive.setText(chatMessage.getmReceiveMessage());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mChatMessage.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

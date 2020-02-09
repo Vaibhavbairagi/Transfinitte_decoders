@@ -4,8 +4,8 @@ public class ChatMessage {
     String mSendMessage;
     String mReceiveMessage;
     public ChatMessage(String sendMessage,String receiveMessage){
-        sendMessage = mSendMessage;
-        receiveMessage = mReceiveMessage;
+        this.mSendMessage = sendMessage;
+        mReceiveMessage = receiveMessage;
     }
 
     public String getmSendMessage() {
