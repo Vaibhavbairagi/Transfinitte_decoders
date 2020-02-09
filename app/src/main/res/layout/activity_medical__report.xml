@@ -12,13 +12,16 @@
         android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="center">
         <EditText
             android:id="@+id/roll_no"
             android:inputType="number"
             android:maxLength="9"
+            android:lines="4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#000000"
             android:gravity="center"
             android:hint="ROLL NO"/>
         <EditText
@@ -26,6 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:lines="4"
+            android:backgroundTint="#000000"
             android:scrollbars="vertical"
             android:hint="PRESCRIBED MEDICINES"/>
         <EditText
@@ -34,23 +39,31 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:scrollbars="vertical"
+            android:lines="4"
+            android:backgroundTint="#000000"
             android:hint="Symptoms and Diagnosis"/>
         <EditText
             android:id="@+id/followup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:backgroundTint="#000000"
+            android:lines="4"
             android:hint="Follow Up"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:layout_gravity="bottom">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="When to take"
+            android:layout_gravity="center"
+            android:textColor="#000000"
             android:textSize="17sp"/>
         <LinearLayout
             android:layout_margin="20dp"
@@ -84,8 +97,12 @@
 
     <Button
         android:id="@+id/Submit"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="SUBMIT"/>
+        android:text="SUBMIT"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="#ffffff"/>
 </LinearLayout>

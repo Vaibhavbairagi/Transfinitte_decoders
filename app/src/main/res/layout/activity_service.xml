@@ -4,275 +4,315 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".service"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".service">
+
     <LinearLayout
+        android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="10dp"
-        android:id="@+id/l1"
         android:visibility="gone">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff000"
-            android:fadingEdgeLength="5dp"
-            android:padding="10dp"
-            android:text="Casualty with Nebulization, Oxygen, Suction, Vaccine – TT, ARV"
-            android:textStyle="italic"
-            ></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff000"
+                android:fadingEdgeLength="5dp"
+                android:padding="10dp"
+                android:text="Casualty with Nebulization, Oxygen, Suction, Vaccine – TT, ARV"
+                android:textStyle="italic"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff000"
-            android:padding="10dp"
-            android:text="Female Ward"
-            android:textStyle="italic"
-            ></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff000"
+                android:padding="10dp"
+                android:text="Female Ward"
+                android:textStyle="italic"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff000"
-            android:text="Male Ward"
-            android:padding="10dp"
-            android:textStyle="italic"
-            ></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff000"
+                android:padding="10dp"
+                android:text="Male Ward"
+                android:textStyle="italic"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff000"
-            android:text="Isolation ward"
-            android:padding="10dp"
-            android:textStyle="italic"
-            ></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff000"
+                android:padding="10dp"
+                android:text="Isolation ward"
+                android:textStyle="italic"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#fff000"
-            android:text="Minor OT"
-            android:padding="10dp"
-            android:textStyle="italic"
-            ></Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff000"
+                android:padding="10dp"
+                android:text="Minor OT"
+                android:textStyle="italic"/>
+        </LinearLayout>
     </LinearLayout>
-    </LinearLayout>
+
     <ScrollView
+        android:id="@+id/l2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/l2"
-        android:visibility="gone"
+        android:orientation="vertical"
         android:padding="10dp"
-        android:orientation="vertical">
+        android:visibility="gone">
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="10dp"
-            android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i1"></ImageView>
-            <TextView
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Injections and Intravenous fluids administrations"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i2"></ImageView>
-            <TextView
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i1"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Injections and Intravenous fluids administrations"
+                    android:textSize="15sp"
+                    android:textStyle="italic"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Emergency Ward"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i3"></ImageView>
-            <TextView
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i2"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Emergency Ward"
+                    android:textSize="15sp"
+                    android:textStyle="italic"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nebulization and Oxygen facial mask"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i4"></ImageView>
-            <TextView
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Nebulization and Oxygen facial mask"
+                    android:textSize="15sp"
+                    android:textStyle="italic"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Electrocardiography"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i5"></ImageView>
-            <TextView
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i4"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Electrocardiography"
+                    android:textSize="15sp"
+                    android:textStyle="italic"/>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ultrasonography"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i6"></ImageView>
-            <TextView
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i5"></ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Ultrasonography"
+                    android:textSize="15sp"
+                    android:textStyle="italic"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Minor Operation Theater"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i7"></ImageView>
-            <TextView
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i6"></ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Minor Operation Theater"
+                    android:textSize="15sp"
+                    android:textStyle="italic"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Autoclave"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_gravity="center"
-                android:layout_height="wrap_content"
-                android:background="@drawable/i8"></ImageView>
-            <TextView
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i7"></ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Autoclave"
+                    android:textSize="15sp"
+                    android:textStyle="italic"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Physiotherapy Clinic"
-                android:gravity="center"
-                android:textSize="15sp"
-                android:padding="10dp"
-                android:textStyle="italic"></TextView>
-        </LinearLayout>
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/i8"></ImageView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Physiotherapy Clinic"
+                    android:textSize="15sp"
+                    android:textStyle="italic"></TextView>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
     <LinearLayout
+        android:id="@+id/l3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical"
-        android:id="@+id/l3"
-        android:visibility="gone"
-        android:layout_gravity="center">
+        android:visibility="gone">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="7:00 a.m. to 9:00 p.m. (all days)"
             android:textSize="20sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="#000000">
 
         </TextView>
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:text="The clinical laboratory is outsourced to Hindlabs of M/s. HLL Lifecare Limited (A Govt. of India Enterprise) Samples of blood, urine, mucous, stool, etc., are obtained from the patients referred to the clinical laboratory by the Medical Officers of Institute Hospital for the prescribed tests. Results of the tests are reported to the doctor on the same day by means of computerized printout. All the tests listed under the CGHS scheme are carried out for the students and eligible employees. Testing and waste management are followed as per NABL Standards. Internal quality control is done daily."
-    android:textSize="15sp"
-    android:textStyle="italic"
-    ></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="The clinical laboratory is outsourced to Hindlabs of M/s. HLL Lifecare Limited (A Govt. of India Enterprise) Samples of blood, urine, mucous, stool, etc., are obtained from the patients referred to the clinical laboratory by the Medical Officers of Institute Hospital for the prescribed tests. Results of the tests are reported to the doctor on the same day by means of computerized printout. All the tests listed under the CGHS scheme are carried out for the students and eligible employees. Testing and waste management are followed as per NABL Standards. Internal quality control is done daily."
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:gravity="center"
+            android:textColor="#000000"></TextView>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/l4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/l4"
         android:layout_gravity="center"
-        android:visibility="gone"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -281,14 +321,17 @@
             android:padding="10dp"
             android:text="24 x 7 (on all days)"
             android:textSize="25sp"
-            android:textStyle="bold">
+            android:textStyle="bold"
+            android:textColor="#000000">
 
         </TextView>
+
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:src="@drawable/i9"></ImageView>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -296,21 +339,25 @@
             android:text="Pharmacy inside the institute hospital is outsourced and functioning under Pradhan Mantri Bhartiya Jan Aushadhi Pariyojana Kendra scheme, run by P.R. Enterprisers.
 
 "
-                        android:textSize="15sp"
-            android:textStyle="italic"
-            ></TextView>
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            android:textStyle="italic"></TextView>
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/l5"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/l5"
-        android:visibility="gone"
+        android:layout_gravity="center"
         android:orientation="vertical"
-        android:layout_gravity="center">
+        android:visibility="gone">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -318,34 +365,35 @@
                 android:fadingEdgeLength="5dp"
                 android:padding="10dp"
                 android:text="Treatment for various musculoskeletal disorders, including post-operative cases, sports injuries, stroke, cerebral palsy"
-                android:textStyle="italic"
-                ></Button>
+                android:textStyle="italic"></Button>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff000"
                 android:padding="10dp"
                 android:text="Pain management and Rehabilitation for sport injuries with corrective and conditioning exercises"
-                android:textStyle="italic"
-                ></Button>
+                android:textStyle="italic"></Button>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#fff000"
-                android:text="Follow up home exercise and Ergonomic Advice."
                 android:padding="10dp"
-                android:textStyle="italic"
-                ></Button>
+                android:text="Follow up home exercise and Ergonomic Advice."
+                android:textStyle="italic"></Button>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
