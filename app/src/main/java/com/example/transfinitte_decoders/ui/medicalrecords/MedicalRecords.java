@@ -1,5 +1,6 @@
 package com.example.transfinitte_decoders.ui.medicalrecords;
 
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,7 +36,7 @@ public class MedicalRecords extends Fragment {
 
         View view = inflater.inflate(R.layout.medical_records_fragment, container, false);
 
-        recyclerView=(RecyclerView)view.findViewById(R.id.lv_med);
+        recyclerView=view.findViewById(R.id.lv_med);
         adapter = new CustomAdapter(MainActivity.data.getPrescriptions());
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
