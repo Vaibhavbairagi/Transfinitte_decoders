@@ -6,18 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.transfinitte_decoders.CustomAdapter;
-import com.example.transfinitte_decoders.MainActivity;
-import com.example.transfinitte_decoders.R;
-
-import java.util.ArrayList;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.transfinitte_decoders.CustomAdapter;
+import com.example.transfinitte_decoders.MainActivity;
+import com.example.transfinitte_decoders.R;
+
+import java.util.ArrayList;
 
 public class MedicalRecords extends Fragment {
 
@@ -46,6 +46,4 @@ public class MedicalRecords extends Fragment {
 
         return view;
     }
-
-
 }

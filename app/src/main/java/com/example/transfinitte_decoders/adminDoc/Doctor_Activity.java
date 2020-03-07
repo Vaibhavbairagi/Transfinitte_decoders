@@ -1,8 +1,5 @@
 package com.example.transfinitte_decoders.adminDoc;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +11,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.transfinitte_decoders.Doctor_Feedback;
 import com.example.transfinitte_decoders.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -21,9 +22,7 @@ public class Doctor_Activity extends AppCompatActivity {
 
     RadioGroup radioGroup;
     Button add_patient;
-    Button dis;
     RadioButton availability;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +30,6 @@ public class Doctor_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_2);
 
         add_patient = findViewById(R.id.add_patient);
-
-
         radioGroup = findViewById(R.id.radio_group);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -48,14 +45,10 @@ public class Doctor_Activity extends AppCompatActivity {
         add_patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-               //Log.e("TAG", availability.getText().toString());
                 Intent intent = new Intent(Doctor_Activity.this, Medical_Report.class);
                 startActivity(intent);
             }
         });
-
-
 
     }
 
@@ -77,10 +70,13 @@ public class Doctor_Activity extends AppCompatActivity {
                 Toast.makeText(this, "Signed out successfully", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.dispenser:
-                Intent intent2 = new Intent(Doctor_Activity.this, dispenser_activity.class);
+                Intent intent1 = new Intent(Doctor_Activity.this, dispenser_activity.class);
+                startActivity(intent1);
+                break;
+            case R.id.view_feedback:
+                Intent intent2 = new Intent(Doctor_Activity.this, Doctor_Feedback.class);
                 startActivity(intent2);
-
-
+                break;
         }
         return true;
     }

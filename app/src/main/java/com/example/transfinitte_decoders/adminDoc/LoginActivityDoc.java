@@ -18,6 +18,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.transfinitte_decoders.MainActivity;
 import com.example.transfinitte_decoders.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,9 +28,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivityDoc extends AppCompatActivity {
     EditText email,password;
@@ -83,7 +83,7 @@ public class LoginActivityDoc extends AppCompatActivity {
             }
         });
         if (mAuth.getCurrentUser() != null) {
-            if(mAuth.getCurrentUser().getEmail().toString().substring(0, 3).equals("doc")){
+            if (mAuth.getCurrentUser().getEmail().substring(0, 3).equals("doc")) {
                 startActivity(new Intent(LoginActivityDoc.this, Doctor_Activity.class));
                 finish();
             }
@@ -138,6 +138,7 @@ public class LoginActivityDoc extends AppCompatActivity {
 
         if(emailTxt.equals("admin")&&passwordTxt.equals("admin")){
             Intent out = new Intent(this,ambulance.class);
+            progressBar.setVisibility(View.GONE);
             startActivity(out);
             return;
         }
@@ -191,6 +192,7 @@ public class LoginActivityDoc extends AppCompatActivity {
                     if(task.isSuccessful()){
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(LoginActivityDoc.this,"Registration Successful",Toast.LENGTH_SHORT).show();
+
                     }else{
                         progressBar.setVisibility(View.INVISIBLE);
                         Toast.makeText(LoginActivityDoc.this,"Registration Failed",Toast.LENGTH_SHORT).show();

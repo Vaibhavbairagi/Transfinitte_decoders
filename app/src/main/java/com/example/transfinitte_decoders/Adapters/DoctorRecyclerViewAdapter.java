@@ -9,14 +9,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.transfinitte_decoders.R;
 import com.example.transfinitte_decoders.pojos.Docs;
-import com.example.transfinitte_decoders.pojos.DocsPojo;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecyclerViewAdapter.MyDoctorViewHolder> {
@@ -45,6 +42,7 @@ public class DoctorRecyclerViewAdapter extends RecyclerView.Adapter<DoctorRecycl
             holder.btn_parent.setClickable(false);
             holder.btn_parent.setFocusable(false);
             holder.btn_parent.setBackgroundColor(Color.parseColor("#B3ffffff"));
+            holder.bookAppointment.setText("Not Available");
         }
     }
 

@@ -2,57 +2,35 @@ package com.example.transfinitte_decoders;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-
-import com.example.transfinitte_decoders.adminDoc.Doctor_Activity;
-import com.example.transfinitte_decoders.adminDoc.LoginActivityDoc;
-import com.example.transfinitte_decoders.adminDoc.dispenser_activity;
-import com.example.transfinitte_decoders.firestore.InventoryRecords;
-import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
-
-import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
-import com.example.transfinitte_decoders.pojos.DocsPojo;
-
-import com.example.transfinitte_decoders.ui.home.HomeFragment;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.util.Log;
-
+import android.view.Menu;
 import android.view.MenuItem;
-
-import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.transfinitte_decoders.adminDoc.LoginActivityDoc;
+import com.example.transfinitte_decoders.firestore.InventoryRecords;
+import com.example.transfinitte_decoders.firestore.UserPrescriptionRecords;
+import com.example.transfinitte_decoders.pojos.DepartmentsPojo;
+import com.example.transfinitte_decoders.pojos.DocsPojo;
+import com.example.transfinitte_decoders.ui.home.HomeFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import androidx.drawerlayout.widget.DrawerLayout;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
-import android.view.Menu;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -91,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         // Show menu icon
         final ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);// will make the icon clickable and add the < at the left of the icon.
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();//for hamburger icon
@@ -105,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void setPrescriptionRecordData(){
-
         FirebaseFirestore.getInstance().collection("Users").document("TEST").set(data);
     }
 
@@ -159,8 +136,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
-
-
     }
 
     @Override
